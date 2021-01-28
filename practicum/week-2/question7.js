@@ -11,5 +11,15 @@ output: 4
 */
 
 var maxSumOfMins = function(input) {
-
+       var contents = [];
+       var lengths = Math.round(input.length / 2);
+       for (let i = 0; i < input.length;i++){
+              var tup = [input[i], input[i+2]];
+              contents.push(tup);
+       }
+       var sums = 0;
+       for (let j = 0; j < lengths; j++){
+              sums += Math.min(contents[j][0], contents[j][1]);
+       }
+       return sums;
 };
