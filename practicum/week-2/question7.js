@@ -14,12 +14,15 @@ var maxSumOfMins = function(input) {
        var contents = [];
        var lengths = Math.round(input.length / 2);
        for (let i = 0; i < input.length;i++){
-              var tup = [input[i], input[i+2]];
-              contents.push(tup);
+              contents.push(input[i]);
        }
+       
+       contents.sort();
+
        var sums = 0;
-       for (let j = 0; j < lengths; j++){
-              sums += Math.min(contents[j][0], contents[j][1]);
+       for (let j = 0; j < contents.length;j+=2){
+              sums += Math.min(contents[j], contents[j+1]);
+             
        }
        return sums;
 };
