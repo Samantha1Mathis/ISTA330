@@ -8,10 +8,10 @@ Return how many groups have the largest size.
 Example:
 input: n = 11
 output: 2
-The groups are: [1, 10], [2, 11], [3], [4], [5], [6], [7], [8], [9]
+The groups are: [1, 10, 19], [2, 11, 20], [3, 12, 21], [4, 13, 22], [5, 14, 23], [6, 15, 24], [7, 16], [8, 17], [9, 18]
 so there are two groups with the largest size.
 */
 
 var largestGroupsCount = function(n) {
-
+    return n % 9;
 };

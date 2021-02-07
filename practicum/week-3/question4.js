@@ -14,4 +14,14 @@ Example:
 
 var hasDuplicates = function(input) {
 
+    let map = new Map();
+    for (let i = 0; i < input.length;i++){
+        if (input[i] in map){
+         map[input[i]] += 1;
+         return true;
+        }else{
+            map[input[i]] = 1
+        }
+    }
+    return false;
 };

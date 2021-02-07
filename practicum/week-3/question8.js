@@ -13,5 +13,21 @@ output: 3
 */
 
 var d_integer = function(input) {
-
+    let map = new Map();
+    for (let i = 0; i < input.length;i++){
+        if (input[i] in map){
+         map[input[i]] += 1;
+        }else{
+            map[input[i]] = 1
+        }
+    }
+    var maxValue = -1
+    for (let key in map){
+        if (key == map[key]){
+            if (maxValue < key){
+                maxValue = key
+            }
+        }
+    }
+    return maxValue;
 };

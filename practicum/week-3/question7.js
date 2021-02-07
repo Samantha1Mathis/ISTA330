@@ -12,5 +12,14 @@ output: [[1,4], [2,5], [3,6]]
 */
 
 var transpose = function(M) {
-
+    var result = [];
+    for (let i = 0; i < M[0].length; i++) {
+        var col = []
+        for (let j = 0; j < M.length; j++) {
+            col.push(M[j][i]);
+        }
+        result.push(col)
+    }
+  
+    return result
 };

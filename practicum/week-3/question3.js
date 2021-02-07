@@ -13,5 +13,30 @@ output: [
 */
 
 var PascalTriangle = function(n) {
-
+  let triangle = [[1], [1, 1]]
+  if (n == 0) {
+    return [];
+  }else if ( n == 1){
+    return [[1]];
+  }else if (n ==2){
+    return triangle;
+  }else{
+    for (let i = 2; i < n; i++){
+      addRow(triangle);
+    }
+  }
+  return triangle
 };
+
+
+var addRow = function(triangle){
+  let previous = triangle[triangle.length-1]
+  let newRow = [1]
+  for (let i = 0; i < previous.length-1;i++){
+    let current = previous[i]
+    let next = previous[i+1]
+    newRow.push(current + next)
+  }
+  newRow.push(1)
+  return triangle.push(newRow)
+}

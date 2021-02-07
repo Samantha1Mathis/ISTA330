@@ -17,7 +17,18 @@ output: true
 */
 
 var isMonotonic = function(input) {
-
+    var direction;
+    if (input[0] > input[1]){
+        direction = true;
+    }else{
+        direction = false;
+    }
+    for (let i = 0; i < input.length; i++){
+        if (input[i] > input[i+1] && direction == false){
+            return false;
+        }else if (input[i] < input[i+1] && direction == true){
+            return false;
+        }
+    }
+    return true;
 };
-
-console.log('hi');
