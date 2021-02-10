@@ -24,7 +24,7 @@ var m_element = function(input) {
     }
     for (let key in map) {
         if (map[key] > (parseInt(length/2))){
-            return key;
+            return parseInt(key);
         }
     }
     return -1;

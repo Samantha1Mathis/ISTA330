@@ -29,5 +29,5 @@ var d_integer = function(input) {
             }
         }
     }
-    return maxValue;
+    return parseInt(maxValue);
 };
