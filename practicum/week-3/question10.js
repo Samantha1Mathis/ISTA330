@@ -16,20 +16,18 @@ output: [[-5, -4], [23, 24]]
 */
 
 var minPairs = function(input) {
-    input.sort()
+    input.sort(function(a, b){return a - b});
      var result = []
-     var m = Infinity
+     var maxs = Infinity
      for (let i = 0; i < input.length;i++){
-         if (Math.abs(input[i + 1] - input[i]) <= m){
-             if (Math.abs(input[i + 1] - input[i]) < m){
+         if (Math.abs(input[i + 1] - input[i]) <= maxs){
+             if (Math.abs(input[i + 1] - input[i]) < maxs){
                  result = []
-                 m = Math.abs(input[i + 1] - input[i]);
+                 maxs = Math.abs(input[i + 1] - input[i]);
              }
  
              result.push([input[i], input[i+1]]);
          }
      }
- 
-     result.sort();
      return result;
  };
