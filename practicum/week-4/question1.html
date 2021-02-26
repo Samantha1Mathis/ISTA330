@@ -1,3 +1,4 @@
+<!-- Samantha Mathis-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +52,31 @@
              rose,
              waterlily
        ];
+       var counter = 0;
+       var table = document.createElement("table");
+       for(let i = 0; i < 2;i++){
+           var row = table.insertRow();
+           for (let j = 0; j < 4; j++){
+               console.log(flowers[counter]);
+                var col = row.insertCell();
+                //Figure element to add the picture and flower name
+                var figure = document.createElement("figure");
+                var image = new Image(200, 200);
+                image.src = "images/" + flowers[counter].picture;
+                var caption = document.createElement("figcaption");
+                caption.innerHTML = "&nbsp&nbsp&nbsp&nbsp" + flowers[counter].name;
+                //adding the elements to the figure
+                figure.appendChild(image);
+                figure.appendChild(caption);
+                col.appendChild(figure);
+                counter++;
+           }
+           
+       }
+       //adding to the html div to be displayed
+       var flowersdiv = document.getElementById("flowersDiv");
+       flowersdiv.appendChild(table);
+
     </script>
 </body>
 </html>

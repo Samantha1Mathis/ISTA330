@@ -1,3 +1,4 @@
+<!--Samantha Mathis-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,8 +84,8 @@
         }
         let daffodil = new Flower('Daffodil', 'daffodil.png');
         let cherryblossom = new Flower('Cherry blossom', 'cherryblossom.png');
-        let lily = new Flower('Lily', 'lily.png');
-        let daisy = new Flower('Daisy', 'daisy.png');
+        let lily = new Flower('Lily', 'lily.jpg');
+        let daisy = new Flower('Daisy', 'daisy.jpg');
         let sunflower = new Flower('Sunflower', 'sunflower.png');
         let tulip = new Flower('Tulip', 'tulip.png');
         let rose = new Flower('Rose', 'rose.png');
@@ -100,7 +101,103 @@
             rose,
             waterlily
         ];
+         // Display the flowers in the order of the original array
+         createTable(flowers);
+
+
+        /**
+         * PURPOSE: This method creates the html table
+         * and rows and places the flowers depending on
+         * an order from an array of flower objects. Displays
+         * the table on the screen, each image is a button to
+         * realphabetize the order
+         * 
+         * @param flowers, which is the array of flower objects
+         */
+        function createTable(flowers){
+            var counter = 0;
+            var table = document.createElement("table");
+            table.setAttribute("id", "table");
+            for(let i = 0; i < 2;i++){
+                var row = table.insertRow();
+                for (let j = 0; j < 4; j++){
+                    var col = row.insertCell();
+                    //figure element to contian picture and flower name
+                    var figure = document.createElement("figure");
+                    var image = new Image(200, 200);
+                    image.setAttribute("id", flowers[counter].name);
+                    image.setAttribute("src", "images/" + flowers[counter].picture);
+                    //rearrange order function
+                    image.onclick = function(){
+                        var id = this.getAttribute("id");
+                        rearrange(id);
+                    }
+                    var caption = document.createElement("figcaption");
+                    caption.innerHTML = "&nbsp&nbsp&nbsp&nbsp" + flowers[counter].name;
+                    //adding elements to the figure
+                    figure.appendChild(image);
+                    figure.appendChild(caption);
+                    col.appendChild(figure);
+                    counter++;
+                }
+                
+            }
+            //Adds table to the html div
+            var flowersdiv = document.getElementById("flowersDiv");
+            flowersdiv.appendChild(table);
+        }
+
+
+        /*
+        * PURPOSE: To rearrange the array into the correct
+        * descending order based on the flower image that 
+        * was clicked on
+        * 
+        * @param element, which is the flower id 
+        */
+        function rearrange(element) {
+            let updateFlowers = [];
+
+            // Sort the flowers array descending order
+            flowers.sort((a, b) => {
+                let keyA = a.name;
+                let keyB = b.name;
+                if (keyA < keyB) return -1;
+                if (keyA > keyB) return 1;
+                return 0;
+            });
+
+            // locating index of the new flower
+            var index = 0;
+            for(let i = 0; i < 8; i++) {
+                if(flowers[i].name == element) {
+                    index = i;
+                }
+            }
+
+            // Updating the array in correct order
+            for(let j = 0; j < 8; j++) {
+                //add first element
+                updateFlowers.push(flowers[index]);
+
+                //adds in the rest in correct positions
+                if(index >= 7) {
+                    index = 0;
+                } else {
+                    index++;
+                }
+            }
+            //Removing old table to place in new table
+            var removeTable = document.getElementById('table');
+            var parent = removeTable.parentElement;
+            parent.removeChild(removeTable);
+            createTable(updateFlowers);
+        }
+ 
     </script>
 </body>
 
 </html>
+
+
+

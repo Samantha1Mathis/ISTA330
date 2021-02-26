@@ -41,3 +41,4 @@ var maxBalanceNumber = function(input) {
     }
     return total;
 };
+
